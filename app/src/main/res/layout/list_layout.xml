@@ -22,7 +22,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/TaskNameInItemLayout"
+                android:id="@+id/TaskNameInListLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
