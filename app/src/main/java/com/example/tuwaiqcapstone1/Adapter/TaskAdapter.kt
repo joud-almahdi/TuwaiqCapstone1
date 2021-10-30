@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tuwaiqcapstone1.Models.TaskDataModel
 import com.example.tuwaiqcapstone1.Models.TaskViewModel
@@ -30,6 +32,32 @@ class TaskAdapter(val list:MutableList<TaskDataModel>,val viewmodel:TaskViewMode
     {
       holder.completionimage.setImageResource(R.drawable.unchecked)
     }
+
+    holder.itemView.setOnClickListener {
+        viewmodel.selectmutablelivedata.postValue(thetasksfound)
+      holder.itemView.findNavController().navigate(R.id.action_mainFragment_to_detailFragment)
+    }
+
+    holder.completionimage.setOnClickListener{
+
+      if (thetasksfound.task_Status==false)
+      {
+        thetasksfound.task_Status=true
+        holder.completionimage.setImageResource(R.drawable.checked)
+      }
+      else
+      {
+        thetasksfound.task_Status=false
+        holder.completionimage.setImageResource(R.drawable.unchecked)
+      }
+      viewmodel.updatetask(thetasksfound)
+
+
+    }
+
+
+
+
 
   }
 
