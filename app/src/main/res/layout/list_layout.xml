@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="26dp"
     android:background="#F8FAF9"
     android:backgroundTint="#F8FAF9"
     android:orientation="vertical">
@@ -41,10 +42,10 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/TaskCompletionImageInItemLayout"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_marginLeft="120dp"
+            android:layout_marginLeft="90dp"
             app:srcCompat="@drawable/checked" />
 
     </LinearLayout>

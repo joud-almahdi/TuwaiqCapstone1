@@ -1,5 +1,6 @@
 package com.example.tuwaiqcapstone1.Database
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.tuwaiqcapstone1.Models.TaskDataModel
 
@@ -10,14 +11,14 @@ interface TaskDao {
     suspend fun addtask(taskmodel:TaskDataModel)
 
     @Query("SELECT * FROM TaskDataModel")
-    fun gettask():List<TaskDataModel>
+    fun gettask(): LiveData<List<TaskDataModel>>
 
 
     @Update
     suspend fun updatetask(taskmodel:TaskDataModel)
 
     @Delete
-    suspend fun deletefun(taskmodel:TaskDataModel)
+    suspend fun deletetask(taskmodel:TaskDataModel)
 
 
 }
