@@ -45,8 +45,6 @@ class EditFragment : Fragment() {
                 items->
             print(items)
             edittaskname.setText(items.task_Name)
-
-            var stringdate= SimpleDateFormat("dd/MM/yyyy").parse(items.due_Date)
             editdesc.setText(items.task_Description)
             check.isChecked=items.task_Status
             //****************************

@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.tuwaiqcapstone1.MainFragment"
-        android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        android:label="Task List"
+        tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_addFragment"
             app:destination="@id/addFragment"
@@ -24,8 +24,8 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.tuwaiqcapstone1.DetailFragment"
-        android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" >
+        android:label="Task Details"
+        tools:layout="@layout/fragment_detail">
         <action
             android:id="@+id/action_detailFragment_to_editFragment"
             app:destination="@id/editFragment"
@@ -35,11 +35,11 @@
     <fragment
         android:id="@+id/addFragment"
         android:name="com.example.tuwaiqcapstone1.AddFragment"
-        android:label="fragment_add"
+        android:label="Add a Task"
         tools:layout="@layout/fragment_add" />
     <fragment
         android:id="@+id/editFragment"
         android:name="com.example.tuwaiqcapstone1.EditFragment"
-        android:label="fragment_edit"
+        android:label="Edit Task Details"
         tools:layout="@layout/fragment_edit" />
 </navigation>

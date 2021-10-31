@@ -13,6 +13,7 @@ import com.example.tuwaiqcapstone1.Models.TaskDataModel
 import com.example.tuwaiqcapstone1.Models.TaskViewModel
 import com.example.tuwaiqcapstone1.R
 import android.graphics.Paint
+import android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
 
 class TaskAdapter(val list:MutableList<TaskDataModel>,val viewmodel:TaskViewModel):RecyclerView.Adapter<ViewHolder>() {
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,10 +28,14 @@ class TaskAdapter(val list:MutableList<TaskDataModel>,val viewmodel:TaskViewMode
     holder.taskduedateinlayout.text=thetasksfound.due_Date.toString()
     if (thetasksfound.task_Status==true)
     {
+      holder.tasknameinlayout.paintFlags=STRIKE_THRU_TEXT_FLAG
+      holder.taskduedateinlayout.paintFlags=STRIKE_THRU_TEXT_FLAG
       holder.completionimage.setImageResource(R.drawable.checked)
     }
     else
     {
+      holder.tasknameinlayout.paintFlags=0
+      holder.taskduedateinlayout.paintFlags=0
       holder.completionimage.setImageResource(R.drawable.unchecked)
     }
 
@@ -44,12 +49,16 @@ class TaskAdapter(val list:MutableList<TaskDataModel>,val viewmodel:TaskViewMode
       if (thetasksfound.task_Status==false)
       {
         thetasksfound.task_Status=true
+        holder.tasknameinlayout.paintFlags=STRIKE_THRU_TEXT_FLAG
+        holder.taskduedateinlayout.paintFlags=STRIKE_THRU_TEXT_FLAG
         holder.completionimage.setImageResource(R.drawable.checked)
 
       }
       else
       {
         thetasksfound.task_Status=false
+        holder.tasknameinlayout.paintFlags=0
+        holder.taskduedateinlayout.paintFlags=0
         holder.completionimage.setImageResource(R.drawable.unchecked)
       }
 
