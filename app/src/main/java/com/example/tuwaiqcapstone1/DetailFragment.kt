@@ -9,14 +9,18 @@ import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.example.tuwaiqcapstone1.Models.TaskDataModel
 import com.example.tuwaiqcapstone1.Models.TaskViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import android.app.Dialog
+import androidx.appcompat.app.AppCompatDialog
+import androidx.appcompat.app.AlertDialog
 
 
 class DetailFragment : Fragment() {
 
-val usedmodel:TaskViewModel by activityViewModels()
-
+val usedviewmodel:TaskViewModel by activityViewModels()
+    lateinit var listoftasks: TaskDataModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,8 +39,8 @@ val usedmodel:TaskViewModel by activityViewModels()
         var detaileddueframe:TextView=view.findViewById(R.id.DueDateInDetailFragment)
         var detaildescription:TextView=view.findViewById(R.id.TaskDescriptionInDetailFragment)
         var editbutton:FloatingActionButton=view.findViewById(R.id.FloatingEditButtonInDetailFragment)
-
-       usedmodel.selectmutablelivedata.observe(viewLifecycleOwner, Observer { it?.let {
+        var deletebutton:FloatingActionButton=view.findViewById(R.id.FloatingDeleteButtonInDetailFragment)
+       usedviewmodel.selectmutablelivedata.observe(viewLifecycleOwner, Observer { it?.let {
            tasks->
             title.text=tasks.task_Name
            if (tasks.task_Status==true)
@@ -51,12 +55,32 @@ val usedmodel:TaskViewModel by activityViewModels()
            detaileddueframe.text=tasks.due_Date
            detailedcreationframe.text=tasks.creation_Date
            detaildescription.text=tasks.task_Description
-
+            listoftasks=tasks
 
        } })
         editbutton.setOnClickListener {
+            usedviewmodel.selectmutablelivedata.postValue(listoftasks)
             findNavController().navigate(R.id.action_detailFragment_to_editFragment)
 
+        }
+
+        deletebutton.setOnClickListener {
+
+            val alertbuilder= AlertDialog.Builder(requireContext())
+
+            alertbuilder.setTitle("Delete Notice")
+            alertbuilder.setMessage("This task will be deleted.This cannot be undone.\n Are you sure?")
+            alertbuilder.setPositiveButton("Yes"){dialogInterface, which ->
+                usedviewmodel.deletetask(listoftasks)
+                findNavController().popBackStack()
+            }
+
+            alertbuilder.setNegativeButton("No"){dialogInterface, which ->
+
+            }
+            val thedialog: AlertDialog =alertbuilder.create()
+            thedialog.setCancelable(false)
+            thedialog.show()
         }
     }
 
