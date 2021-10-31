@@ -51,22 +51,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="144dp"
-                android:layout_marginBottom="252dp"
+                android:layout_marginBottom="232dp"
                 android:text="Completed?"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/DueDateInAddFragment"
-                app:layout_constraintVertical_bias="0.391" />
+                app:layout_constraintEnd_toEndOf="parent" />
 
-            <EditText
+            <DatePicker
                 android:id="@+id/DueDateInEditFragment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_width="285dp"
+                android:layout_height="87dp"
+                android:layout_marginTop="24dp"
+                android:calendarViewShown="false"
+                android:datePickerMode="spinner"
                 android:ems="10"
                 android:inputType="date"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.466"
+                app:layout_constraintHorizontal_bias="0.375"
                 app:layout_constraintStart_toEndOf="@+id/textView14"
                 app:layout_constraintTop_toBottomOf="@+id/TaskNameInEditFragment" />
 

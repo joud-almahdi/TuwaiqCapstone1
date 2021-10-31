@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CheckBox
+import android.widget.DatePicker
 import android.widget.EditText
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LifecycleOwner
@@ -34,14 +35,14 @@ class AddFragment : Fragment() {
 
 
         val nameedittext:EditText=view.findViewById(R.id.TaskNameInAddFragment)
-        val duedateedittext:EditText=view.findViewById(R.id.DueDateInAddFragment)
+        val duedateedittext:DatePicker=view.findViewById(R.id.DueDateInAddFragment)
         val statusedit:CheckBox=view.findViewById(R.id.StatusInAddFragment)
         val descriptionedit:EditText=view.findViewById(R.id.TaskDescriptionInAddFragment)
         val addtaskbutton: Button =view.findViewById(R.id.AddButtonInAddFragment)
 
         addtaskbutton.setOnClickListener {
             var name=nameedittext.text.toString()
-            var dudate=duedateedittext.text.toString()
+            var dudate:String="${duedateedittext.dayOfMonth}/${duedateedittext.month+1}/${duedateedittext.year}"
             var status=statusedit.isChecked
             var description=descriptionedit.text.toString()
 

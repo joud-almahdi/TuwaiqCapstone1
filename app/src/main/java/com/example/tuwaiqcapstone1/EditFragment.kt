@@ -6,9 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -16,9 +13,10 @@ import com.example.tuwaiqcapstone1.Models.TaskDataModel
 import com.example.tuwaiqcapstone1.Models.TaskViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import android.app.Dialog
-import android.widget.EditText
+import android.widget.*
 import androidx.appcompat.app.AppCompatDialog
 import androidx.appcompat.app.AlertDialog
+import java.text.SimpleDateFormat
 
 
 class EditFragment : Fragment() {
@@ -38,15 +36,17 @@ class EditFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         var edittaskname:EditText=view.findViewById(R.id.TaskNameInEditFragment)
-        var editduedate:EditText=view.findViewById(R.id.DueDateInEditFragment)
+        var editduedate: DatePicker =view.findViewById(R.id.DueDateInEditFragment)
         var editdesc:EditText=view.findViewById(R.id.TaskDescriptionInEditFragment)
         var check:CheckBox=view.findViewById(R.id.StatusInEditFragment)
         var editbutton: Button =view.findViewById(R.id.EditButtonInEditFragment)
+
         usedviewmodel.selectmutablelivedata.observe(viewLifecycleOwner, Observer {
                 items->
             print(items)
             edittaskname.setText(items.task_Name)
-            editduedate.setText(items.due_Date)
+
+            var stringdate= SimpleDateFormat("dd/MM/yyyy").parse(items.due_Date)
             editdesc.setText(items.task_Description)
             check.isChecked=items.task_Status
             //****************************
@@ -54,10 +54,10 @@ class EditFragment : Fragment() {
 
         })
 
-
         editbutton.setOnClickListener {
             listoftasks.task_Name=edittaskname.text.toString()
-            listoftasks.due_Date=editduedate.text.toString()
+            var dudate:String="${editduedate.dayOfMonth}/${editduedate.month+1}/${editduedate.year}"
+            listoftasks.due_Date=dudate.toString()
             listoftasks.task_Description=editdesc.text.toString()
             listoftasks.task_Status=check.isChecked
             usedviewmodel.updatetask(listoftasks)

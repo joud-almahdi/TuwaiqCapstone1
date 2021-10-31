@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tuwaiqcapstone1.Models.TaskDataModel
 import com.example.tuwaiqcapstone1.Models.TaskViewModel
 import com.example.tuwaiqcapstone1.R
+import android.graphics.Paint
 
 class TaskAdapter(val list:MutableList<TaskDataModel>,val viewmodel:TaskViewModel):RecyclerView.Adapter<ViewHolder>() {
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -44,12 +45,16 @@ class TaskAdapter(val list:MutableList<TaskDataModel>,val viewmodel:TaskViewMode
       {
         thetasksfound.task_Status=true
         holder.completionimage.setImageResource(R.drawable.checked)
+
       }
       else
       {
         thetasksfound.task_Status=false
         holder.completionimage.setImageResource(R.drawable.unchecked)
       }
+
+
+
       viewmodel.updatetask(thetasksfound)
 
 
