@@ -13,10 +13,14 @@ import com.example.tuwaiqcapstone1.Models.TaskDataModel
 import com.example.tuwaiqcapstone1.Models.TaskViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import android.app.Dialog
+import android.os.Build
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDialog
 import androidx.appcompat.app.AlertDialog
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 
 class EditFragment : Fragment() {
@@ -32,6 +36,7 @@ class EditFragment : Fragment() {
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -40,6 +45,12 @@ class EditFragment : Fragment() {
         var editdesc:EditText=view.findViewById(R.id.TaskDescriptionInEditFragment)
         var check:CheckBox=view.findViewById(R.id.StatusInEditFragment)
         var editbutton: Button =view.findViewById(R.id.EditButtonInEditFragment)
+
+
+
+
+
+
 
         usedviewmodel.selectmutablelivedata.observe(viewLifecycleOwner, Observer {
                 items->
@@ -54,7 +65,15 @@ class EditFragment : Fragment() {
 
         editbutton.setOnClickListener {
             listoftasks.task_Name=edittaskname.text.toString()
-            var dudate:String="${editduedate.dayOfMonth}/${editduedate.month+1}/${editduedate.year}"
+
+
+            val dudatetobeinserted=
+                LocalDate.of(editduedate.year,editduedate.month+1,editduedate.dayOfMonth)
+            val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+            var dateastext:String=dudatetobeinserted.format(formatter)
+
+
+            var dudate:String=dateastext
             listoftasks.due_Date=dudate.toString()
             listoftasks.task_Description=editdesc.text.toString()
             listoftasks.task_Status=check.isChecked

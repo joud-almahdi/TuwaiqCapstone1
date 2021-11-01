@@ -1,6 +1,8 @@
 package com.example.tuwaiqcapstone1.Adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +16,10 @@ import com.example.tuwaiqcapstone1.Models.TaskViewModel
 import com.example.tuwaiqcapstone1.R
 import android.graphics.Paint
 import android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
+import android.os.Build
+import androidx.annotation.RequiresApi
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class TaskAdapter(val list:MutableList<TaskDataModel>,val viewmodel:TaskViewModel):RecyclerView.Adapter<ViewHolder>() {
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,11 +28,28 @@ class TaskAdapter(val list:MutableList<TaskDataModel>,val viewmodel:TaskViewMode
 
   }
 
+  @SuppressLint("SetTextI18n")
+  @RequiresApi(Build.VERSION_CODES.O)
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
     //https://developer.android.com/reference/kotlin/android/graphics/Paint#strike_thru_text_flag
     val thetasksfound=list[position]
-    holder.tasknameinlayout.text=thetasksfound.task_Name
-    holder.taskduedateinlayout.text=thetasksfound.due_Date.toString()
+
+
+    val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+    val useddate=LocalDate.parse(thetasksfound.due_Date,formatter)
+
+      if(useddate.isBefore(LocalDate.now()))
+      {
+        holder.tasknameinlayout.setTextColor(Color.RED)
+        holder.tasknameinlayout.text=thetasksfound.task_Name + "(Overdue)"
+        holder.taskduedateinlayout.setTextColor(Color.RED)
+        holder.taskduedateinlayout.text=thetasksfound.due_Date.toString()
+
+      }
+    else {
+        holder.tasknameinlayout.text = thetasksfound.task_Name
+        holder.taskduedateinlayout.text = thetasksfound.due_Date.toString()
+      }
     if (thetasksfound.task_Status==true)
     {
       holder.tasknameinlayout.paintFlags=STRIKE_THRU_TEXT_FLAG

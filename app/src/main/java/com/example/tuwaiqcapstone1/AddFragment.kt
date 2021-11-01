@@ -46,12 +46,17 @@ class AddFragment : Fragment() {
         val descriptionedit:EditText=view.findViewById(R.id.TaskDescriptionInAddFragment)
         val addtaskbutton: Button =view.findViewById(R.id.AddButtonInAddFragment)
 //https://www.ictdemy.com/kotlin/oop/date-and-time-in-kotlin-modifying-and-intervals
-        val dudatetobeinserted=LocalDate.of(duedateedittext.year,duedateedittext.month+1,duedateedittext.dayOfMonth)
-        val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
-        var dateastext:String=dudatetobeinserted.format(formatter)
+
 
         addtaskbutton.setOnClickListener {
             var name=nameedittext.text.toString()
+
+
+            val dudatetobeinserted=LocalDate.of(duedateedittext.year,duedateedittext.month+1,duedateedittext.dayOfMonth)
+            val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+            var dateastext:String=dudatetobeinserted.format(formatter)
+
+
             var dudate=dateastext
             var status=statusedit.isChecked
             var description=descriptionedit.text.toString()
