@@ -23,6 +23,7 @@ class TaskAdapter(val list:MutableList<TaskDataModel>,val viewmodel:TaskViewMode
   }
 
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    //https://developer.android.com/reference/kotlin/android/graphics/Paint#strike_thru_text_flag
     val thetasksfound=list[position]
     holder.tasknameinlayout.text=thetasksfound.task_Name
     holder.taskduedateinlayout.text=thetasksfound.due_Date.toString()

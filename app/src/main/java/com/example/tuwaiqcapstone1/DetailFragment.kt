@@ -64,6 +64,9 @@ val usedviewmodel:TaskViewModel by activityViewModels()
 
         }
 
+
+        //https://www.javatpoint.com/kotlin-android-alertdialog
+
         deletebutton.setOnClickListener {
 
             val alertbuilder= AlertDialog.Builder(requireContext())
