@@ -119,7 +119,25 @@ class MainFragment : Fragment() {
 
        var returnedlist= mutableListOf<TaskDataModel>()
 
+        list.forEach {
+            if(it.due_Date!= "") {
+                val theduedaytocompare = it.due_Date
+                val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+                var thefinalduedatetocompare = LocalDate.parse(theduedaytocompare, formatter)
+                var daysbetween: Long = Duration.between(
+                    daytocompareto.atStartOfDay(),
+                    thefinalduedatetocompare.atStartOfDay()
+                ).toDays()
 
+                Log.d("daysbetween", daysbetween.toString())
+
+                if (daysbetween.toString() == "1" && !it.task_Status) {
+                    Log.d(" the list", "inside if")
+                    returnedlist.add(it)
+                }
+            }
+
+        }
         Log.d("The list", returnedlist.toString())
         return returnedlist
 

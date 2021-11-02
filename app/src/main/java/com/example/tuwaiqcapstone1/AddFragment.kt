@@ -65,10 +65,12 @@ class AddFragment : Fragment() {
         dudatebutton.setOnClickListener{
             val datePickerDialog = DatePickerDialog(requireContext(), DatePickerDialog.OnDateSetListener
             { view, year, monthOfYear, dayOfMonth ->
-
-                duedateedittext.setText((LocalDate.of(year,month+1,dayOfMonth)).toString())
             }, year, month, day)
             datePickerDialog.datePicker.minDate=calendar.timeInMillis
+            datePickerDialog.setOnDateSetListener { view, year, month, dayOfMonth ->
+                duedateedittext.setText((LocalDate.of(year,month+1,dayOfMonth)).toString())
+
+            }
             datePickerDialog.show()
         }
 

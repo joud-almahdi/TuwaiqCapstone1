@@ -51,6 +51,8 @@ class EditFragment : Fragment() {
 
 
 
+        //https://developer.android.com/reference/kotlin/android/app/DatePickerDialog
+        //https://androidride.com/open-calendar-on-button-click-in-android-example-kotlin-java/#
 
         val calendar=Calendar.getInstance()
         val year = Calendar.YEAR
@@ -59,9 +61,13 @@ class EditFragment : Fragment() {
         editduedatebutton.setOnClickListener{
             val datePickerDialog = DatePickerDialog(requireContext(), DatePickerDialog.OnDateSetListener
             { view, year, monthOfYear, dayOfMonth ->
-                editduedatetext.setText((LocalDate.of(year,month+1,dayOfMonth)).toString())
+
             }, year, month, day)
             datePickerDialog.datePicker.minDate=calendar.timeInMillis
+            datePickerDialog.setOnDateSetListener { view, year, month, dayOfMonth ->
+                editduedatetext.setText((LocalDate.of(year,month+1,dayOfMonth)).toString())
+
+            }
             datePickerDialog.show()
         }
 
