@@ -62,13 +62,13 @@
                 android:id="@+id/StatusInAddFragment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="172dp"
-                android:layout_marginBottom="196dp"
+                android:layout_marginBottom="260dp"
                 android:text="Completed?"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/DueDateInAddFragment"
-                app:layout_constraintVertical_bias="0.407" />
+                app:layout_constraintVertical_bias="0.9" />
 
             <TextView
                 android:id="@+id/textView12"
@@ -81,20 +81,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.592" />
-
-            <DatePicker
-                android:id="@+id/DueDateInAddFragment"
-                android:layout_width="242dp"
-                android:layout_height="81dp"
-                android:layout_marginTop="28dp"
-                android:calendarViewShown="false"
-                android:datePickerMode="spinner"
-                android:ems="10"
-                android:inputType="date"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.324"
-                app:layout_constraintStart_toEndOf="@+id/textView2"
-                app:layout_constraintTop_toBottomOf="@+id/TaskNameInAddFragment" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/AddButtonInAddFragment"
@@ -125,6 +111,28 @@
                 app:layout_constraintStart_toEndOf="@+id/textView12"
                 app:layout_constraintTop_toBottomOf="@+id/StatusInAddFragment"
                 app:layout_constraintVertical_bias="0.923" />
+
+            <Button
+                android:id="@+id/DueDateInAddFragment"
+                android:layout_width="114dp"
+                android:layout_height="41dp"
+                android:layout_marginTop="44dp"
+                android:layout_marginEnd="52dp"
+                android:text="Set Date"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/TaskNameInAddFragment" />
+
+            <EditText
+                android:id="@+id/DueDateEditTextInAddFragment"
+                android:layout_width="85dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="44dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toStartOf="@+id/DueDateInAddFragment"
+                app:layout_constraintHorizontal_bias="0.559"
+                app:layout_constraintStart_toEndOf="@+id/textView2"
+                app:layout_constraintTop_toBottomOf="@+id/TaskNameInAddFragment" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

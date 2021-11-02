@@ -37,13 +37,15 @@ class TaskAdapter(val list:MutableList<TaskDataModel>,val viewmodel:TaskViewMode
     //https://developer.android.com/reference/kotlin/android/graphics/Paint#strike_thru_text_flag
     val thetasksfound=list[position]
 
+    if(thetasksfound.due_Date!= "")
+    {
+      val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+      val useddate=LocalDate.parse(thetasksfound.due_Date,formatter)
+      val currentdate:LocalDate= LocalDate.now()
+      holder.taskduedateinlayout.visibility= VISIBLE
+      holder.taskduedateinlayout.text = thetasksfound.due_Date
 
-    val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
-    val useddate=LocalDate.parse(thetasksfound.due_Date,formatter)
-    val currentdate:LocalDate= LocalDate.now()
 
-    holder.tasknameinlayout.text = thetasksfound.task_Name
-    holder.taskduedateinlayout.text = thetasksfound.due_Date
       if(useddate.isBefore(currentdate))
       {
 
@@ -56,16 +58,22 @@ class TaskAdapter(val list:MutableList<TaskDataModel>,val viewmodel:TaskViewMode
         Log.d("changingimages","Please don't let me edit my image")
 
       }
+
+
+    }
+
+
+    holder.tasknameinlayout.text = thetasksfound.task_Name
+
+
     if (thetasksfound.task_Status==true)
     {
       holder.tasknameinlayout.paintFlags=STRIKE_THRU_TEXT_FLAG
-      holder.taskduedateinlayout.paintFlags=STRIKE_THRU_TEXT_FLAG
       holder.completionimage.setImageResource(R.drawable.checked)
     }
     else
     {
       holder.tasknameinlayout.paintFlags=0
-      holder.taskduedateinlayout.paintFlags=0
       holder.completionimage.setImageResource(R.drawable.unchecked)
     }
 

@@ -1,6 +1,7 @@
 package com.example.tuwaiqcapstone1
 
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -21,6 +22,7 @@ import androidx.appcompat.app.AlertDialog
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 
 class EditFragment : Fragment() {
@@ -41,13 +43,27 @@ class EditFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         var edittaskname:EditText=view.findViewById(R.id.TaskNameInEditFragment)
-        var editduedate: DatePicker =view.findViewById(R.id.DueDateInEditFragment)
+        var editduedatebutton: Button =view.findViewById(R.id.DueDateInEditFragment)
+        var editduedatetext: EditText =view.findViewById(R.id.DueDateEditTextInEditFragment)
         var editdesc:EditText=view.findViewById(R.id.TaskDescriptionInEditFragment)
         var check:CheckBox=view.findViewById(R.id.StatusInEditFragment)
         var editbutton: Button =view.findViewById(R.id.EditButtonInEditFragment)
 
 
 
+
+        val calendar=Calendar.getInstance()
+        val year = Calendar.YEAR
+        val month = calendar.get(Calendar.MONTH)
+         val day = Calendar.DAY_OF_MONTH
+        editduedatebutton.setOnClickListener{
+            val datePickerDialog = DatePickerDialog(requireContext(), DatePickerDialog.OnDateSetListener
+            { view, year, monthOfYear, dayOfMonth ->
+                editduedatetext.setText((LocalDate.of(year,month+1,dayOfMonth)).toString())
+            }, year, month, day)
+            datePickerDialog.datePicker.minDate=calendar.timeInMillis
+            datePickerDialog.show()
+        }
 
 
 
@@ -56,6 +72,7 @@ class EditFragment : Fragment() {
                 items->
             print(items)
             edittaskname.setText(items.task_Name)
+            editduedatetext.setText(items.due_Date)
             editdesc.setText(items.task_Description)
             check.isChecked=items.task_Status
             //****************************
@@ -67,19 +84,22 @@ class EditFragment : Fragment() {
             listoftasks.task_Name=edittaskname.text.toString()
 
 
-            val dudatetobeinserted=
-                LocalDate.of(editduedate.year,editduedate.month+1,editduedate.dayOfMonth)
-            val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+            val dudatetobeinserted=editduedatetext.text.toString()
+            val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
             var dateastext:String=dudatetobeinserted.format(formatter)
 
 
-            var dudate:String=dateastext
+            var dudate=dateastext
             listoftasks.due_Date=dudate.toString()
             listoftasks.task_Description=editdesc.text.toString()
             listoftasks.task_Status=check.isChecked
-            usedviewmodel.updatetask(listoftasks)
+            if(edittaskname.text.isNotEmpty())
+            {
+                usedviewmodel.updatetask(listoftasks)
 
-            findNavController().popBackStack()
+                findNavController().popBackStack()
+            }
+
 
 
 

@@ -26,7 +26,7 @@ class TaskViewModel:ViewModel() {
  @RequiresApi(Build.VERSION_CODES.O)
  var date:LocalDate= LocalDate.now()
  @RequiresApi(Build.VERSION_CODES.O)
- val formatter:DateTimeFormatter= DateTimeFormatter.ofPattern("dd-MM-yyyy")
+ val formatter:DateTimeFormatter= DateTimeFormatter.ofPattern("yyyy-MM-dd")
     @RequiresApi(Build.VERSION_CODES.O)
     var dateastext:String=date.format(formatter)
 
