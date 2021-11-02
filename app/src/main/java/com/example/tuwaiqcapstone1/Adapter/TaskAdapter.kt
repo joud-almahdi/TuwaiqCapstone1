@@ -40,21 +40,21 @@ class TaskAdapter(val list:MutableList<TaskDataModel>,val viewmodel:TaskViewMode
 
     val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
     val useddate=LocalDate.parse(thetasksfound.due_Date,formatter)
+    val currentdate:LocalDate= LocalDate.now()
 
-      if(useddate.isBefore(LocalDate.now()))
+    holder.tasknameinlayout.text = thetasksfound.task_Name
+    holder.taskduedateinlayout.text = thetasksfound.due_Date
+      if(useddate.isBefore(currentdate))
       {
+
+
         holder.tasknameinlayout.setTextColor(Color.RED)
-        holder.tasknameinlayout.text=thetasksfound.task_Name
         holder.taskduedateinlayout.setTextColor(Color.RED)
-        holder.taskduedateinlayout.text=thetasksfound.due_Date.toString()
         holder.overudealert.visibility=VISIBLE
         holder.overudealert.setText("Overdue")
         holder.overudealert.setTextColor(Color.RED)
+        Log.d("changingimages","Please don't let me edit my image")
 
-      }
-    else {
-        holder.tasknameinlayout.text = thetasksfound.task_Name
-        holder.taskduedateinlayout.text = thetasksfound.due_Date.toString()
       }
     if (thetasksfound.task_Status==true)
     {
@@ -74,8 +74,9 @@ class TaskAdapter(val list:MutableList<TaskDataModel>,val viewmodel:TaskViewMode
       holder.itemView.findNavController().navigate(R.id.action_mainFragment_to_detailFragment)
     }
 
+
     holder.completionimage.setOnClickListener{
-        Log.d("changingimages","Please don't let me edit my image")
+
       if (thetasksfound.task_Status==false)
       {
         thetasksfound.task_Status=true

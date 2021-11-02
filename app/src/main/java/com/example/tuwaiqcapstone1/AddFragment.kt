@@ -61,9 +61,12 @@ class AddFragment : Fragment() {
             var status=statusedit.isChecked
             var description=descriptionedit.text.toString()
 
+                if(name.isNotEmpty())
+                {
+                    usedviewmodel.addatask(name,status,dudate,description)
+                    findNavController().popBackStack()
+                }
 
-                usedviewmodel.addatask(name,status,dudate,description)
-                findNavController().popBackStack()
 
         }
 

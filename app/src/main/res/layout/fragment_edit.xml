@@ -23,34 +23,36 @@
                 android:id="@+id/EditButtonInEditFragment"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
                 android:background="#52FFA8"
                 android:backgroundTint="#52FFA8"
                 android:text="Edit"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.802" />
+                app:layout_constraintVertical_bias="0.894" />
 
             <TextView
                 android:id="@+id/textView15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
                 android:text="Description"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.068"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.592" />
+                app:layout_constraintVertical_bias="0.629" />
 
             <CheckBox
                 android:id="@+id/StatusInEditFragment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="144dp"
+                android:layout_marginEnd="128dp"
                 android:layout_marginBottom="232dp"
                 android:text="Completed?"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -101,7 +103,7 @@
                 android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="24dp"
                 android:text="Task Name"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -121,10 +123,10 @@
                 android:inputType="textMultiLine"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.051"
                 app:layout_constraintStart_toEndOf="@+id/textView15"
                 app:layout_constraintTop_toBottomOf="@+id/StatusInEditFragment"
-                app:layout_constraintVertical_bias="0.039" />
+                app:layout_constraintVertical_bias="0.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
