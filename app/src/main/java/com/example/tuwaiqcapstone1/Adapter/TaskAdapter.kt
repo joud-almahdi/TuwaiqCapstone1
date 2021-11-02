@@ -18,6 +18,7 @@ import android.graphics.Paint
 import android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
 import android.os.Build
 import android.util.Log
+import android.view.View.VISIBLE
 import androidx.annotation.RequiresApi
 import java.time.Duration
 import java.time.LocalDate
@@ -37,19 +38,18 @@ class TaskAdapter(val list:MutableList<TaskDataModel>,val viewmodel:TaskViewMode
     val thetasksfound=list[position]
 
 
-
-
-
-
     val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
     val useddate=LocalDate.parse(thetasksfound.due_Date,formatter)
 
       if(useddate.isBefore(LocalDate.now()))
       {
         holder.tasknameinlayout.setTextColor(Color.RED)
-        holder.tasknameinlayout.text=thetasksfound.task_Name + "(Overdue)"
+        holder.tasknameinlayout.text=thetasksfound.task_Name
         holder.taskduedateinlayout.setTextColor(Color.RED)
         holder.taskduedateinlayout.text=thetasksfound.due_Date.toString()
+        holder.overudealert.visibility=VISIBLE
+        holder.overudealert.setText("Overdue")
+        holder.overudealert.setTextColor(Color.RED)
 
       }
     else {
@@ -132,4 +132,5 @@ class ViewHolder(view: View):RecyclerView.ViewHolder(view)
   val tasknameinlayout: TextView =view.findViewById(R.id.TaskNameInListLayout)
   val taskduedateinlayout:TextView=view.findViewById(R.id.TaskDueDateInItemLayout)
     val completionimage:ImageView=view.findViewById(R.id.TaskCompletionImageInItemLayout)
+  val overudealert:TextView=view.findViewById(R.id.OverdueTextInListLayout)
 }

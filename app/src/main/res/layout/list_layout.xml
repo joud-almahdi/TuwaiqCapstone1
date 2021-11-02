@@ -10,54 +10,71 @@
     android:backgroundTint="#F8FAF9"
     android:orientation="vertical"
 
-    >
+    android:padding="5dp">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
         android:background="?selectableItemBackground"
         android:backgroundTint="#F8FAF9"
-        android:orientation="horizontal">
+        android:padding="6dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="#F8FAF9"
-            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/TaskNameInListLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textColor="#000000"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/TaskDueDateInItemLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:text="TextView"
-                android:textColor="#000000"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/TaskNameInListLayout"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="TextView"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/TaskDueDateInItemLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/TaskCompletionImageInItemLayout"
-                android:layout_width="131dp"
-                android:layout_height="131dp"
-                android:layout_marginLeft="110dp"
-                app:srcCompat="@drawable/checked" />
 
-        </LinearLayout>
+        <TextView
+            android:id="@+id/TaskDueDateInItemLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="36dp"
+            android:text="TextView"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TaskNameInListLayout" />
 
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/TaskCompletionImageInItemLayout"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="5dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/checked" />
+
+        <TextView
+            android:id="@+id/OverdueTextInListLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="TextView"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/TaskDueDateInItemLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TaskNameInListLayout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

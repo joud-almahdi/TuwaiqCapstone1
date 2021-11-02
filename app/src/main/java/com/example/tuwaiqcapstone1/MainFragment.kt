@@ -76,7 +76,7 @@ class MainFragment : Fragment() {
             list.clear()
             list.addAll(items)
 
-            var listafterreturn=getclosetoduedatetasks(list)
+            var listafterreturn:MutableList<TaskDataModel> = getclosetoduedatetasks(list)
             listafterreturn.forEach {
                 notificationid=counter
 
@@ -84,17 +84,7 @@ class MainFragment : Fragment() {
 
                 counter++
 
-
-
-
             }
-
-
-
-
-
-
-
 
 
 
@@ -137,7 +127,7 @@ class MainFragment : Fragment() {
 
             Log.d("daysbetween", daysbetween.toString())
 
-            if(daysbetween.toString() == "1")
+            if(daysbetween.toString() == "1" && !it.task_Status)
             {
                 Log.d(" the list", "inside if")
                 returnedlist.add(it)
