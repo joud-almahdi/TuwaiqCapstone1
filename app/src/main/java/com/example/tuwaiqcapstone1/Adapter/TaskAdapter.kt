@@ -17,7 +17,9 @@ import com.example.tuwaiqcapstone1.R
 import android.graphics.Paint
 import android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
+import java.time.Duration
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -33,6 +35,10 @@ class TaskAdapter(val list:MutableList<TaskDataModel>,val viewmodel:TaskViewMode
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
     //https://developer.android.com/reference/kotlin/android/graphics/Paint#strike_thru_text_flag
     val thetasksfound=list[position]
+
+
+
+
 
 
     val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
@@ -69,7 +75,7 @@ class TaskAdapter(val list:MutableList<TaskDataModel>,val viewmodel:TaskViewMode
     }
 
     holder.completionimage.setOnClickListener{
-
+        Log.d("changingimages","Please don't let me edit my image")
       if (thetasksfound.task_Status==false)
       {
         thetasksfound.task_Status=true
@@ -102,6 +108,20 @@ class TaskAdapter(val list:MutableList<TaskDataModel>,val viewmodel:TaskViewMode
   override fun getItemCount(): Int {
     return list.size
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
