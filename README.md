@@ -1,3 +1,6 @@
+![v](https://github.com/joud-almahdi/TuwaiqCapstone1/blob/d99b49776bb383f621965c23fb5f162d72c84366/v.png)
+
+
 # TuwaiqCapstone1
 
 This is the Individual Project for Tuwaiq CapStone 1 for the Kotlin Track. It is a ToDo List App
@@ -25,13 +28,15 @@ This is a prototype of the Splash screen,the first screen of the app.It shows up
 
 
 
-![mainmenu](https://github.com/joud-almahdi/TuwaiqCapstone1/blob/2cb3d6e4901b58717e8ab52b33c7f78ab4419ad1/main%20menu.png)
+![mainmenu](https://github.com/joud-almahdi/TuwaiqCapstone1/blob/788ffb0451c44cc379790df64234c894271e8e2e/main%20menu.png)
 
 
 
 
 
-This is first screen that shows to the user. It contains all the tasks found in the database. A checkmark image is displayed on the completed ones, and those that are overdue are marked as such.
+This is first screen that shows to the user. It contains all the tasks found in the database. A checkmark image is displayed on the completed ones, and those that are overdue are marked as such.The user can filter the tasks shown with the button above according to their completion status
+
+![complete](https://github.com/joud-almahdi/TuwaiqCapstone1/blob/d99b49776bb383f621965c23fb5f162d72c84366/MainMenu.png)
 
 
 
@@ -39,9 +44,7 @@ This is first screen that shows to the user. It contains all the tasks found in 
 
 
 
-
-
-![add](https://github.com/joud-almahdi/TuwaiqCapstone1/blob/2cb3d6e4901b58717e8ab52b33c7f78ab4419ad1/add.png)
+![add](https://github.com/joud-almahdi/TuwaiqCapstone1/blob/d99b49776bb383f621965c23fb5f162d72c84366/add.png)
 
 
 
@@ -57,7 +60,7 @@ When the user clicks on a task in the main menu, they can view all the details r
 
 
 
-![edit](https://github.com/joud-almahdi/TuwaiqCapstone1/blob/2cb3d6e4901b58717e8ab52b33c7f78ab4419ad1/edit.png)
+![edit](https://github.com/joud-almahdi/TuwaiqCapstone1/blob/d99b49776bb383f621965c23fb5f162d72c84366/edit.png)
 
 
                                                                         
