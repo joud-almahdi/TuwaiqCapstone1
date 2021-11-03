@@ -43,6 +43,8 @@ val usedviewmodel:TaskViewModel by activityViewModels()
        usedviewmodel.selectmutablelivedata.observe(viewLifecycleOwner, Observer { it?.let {
            tasks->
             title.text=tasks.task_Name
+
+           //Set status to completed or incompleted depending on status value
            if (tasks.task_Status==true)
            {
                detailedstate.setText("Completed")
@@ -71,6 +73,7 @@ val usedviewmodel:TaskViewModel by activityViewModels()
 
             val alertbuilder= AlertDialog.Builder(requireContext())
 
+            //The user can't delete a task until they can confirm in the alert dialog
             alertbuilder.setTitle("Delete Notice")
             alertbuilder.setMessage("This task will be deleted.This cannot be undone.\n Are you sure?")
             alertbuilder.setPositiveButton("Yes"){dialogInterface, which ->

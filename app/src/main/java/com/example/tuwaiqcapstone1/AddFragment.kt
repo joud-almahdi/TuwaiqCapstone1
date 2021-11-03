@@ -8,10 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.DatePicker
-import android.widget.EditText
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LifecycleOwner
@@ -54,9 +51,7 @@ class AddFragment : Fragment() {
 
 
 
-
-
-
+        //Setup for the datepicker
         val calendar=Calendar.getInstance()
         val year = Calendar.YEAR
         val month = calendar.get(Calendar.MONTH)
@@ -66,7 +61,11 @@ class AddFragment : Fragment() {
             val datePickerDialog = DatePickerDialog(requireContext(), DatePickerDialog.OnDateSetListener
             { view, year, monthOfYear, dayOfMonth ->
             }, year, month, day)
+
+            //Prevents user from picking a date before the current one
             datePickerDialog.datePicker.minDate=calendar.timeInMillis
+
+            //Changes the date to what the user
             datePickerDialog.setOnDateSetListener { view, year, month, dayOfMonth ->
                 duedateedittext.setText((LocalDate.of(year,month+1,dayOfMonth)).toString())
 
@@ -97,6 +96,10 @@ class AddFragment : Fragment() {
                 {
                     usedviewmodel.addatask(name,status,dudate,description)
                     findNavController().popBackStack()
+                }
+            else
+                {
+                    Toast.makeText(requireContext(), "Please enter a name for your task", Toast.LENGTH_SHORT).show()
                 }
 
 

@@ -15,6 +15,8 @@ class TaskViewModel:ViewModel() {
 
 
     private val repository=TaskRepository.get()
+
+    //two functions for completed and uncompleted tasks
     var taskcontent=repository.getTask(false)
     var taskcompletecontent=repository.getCompleteTask(true)
 

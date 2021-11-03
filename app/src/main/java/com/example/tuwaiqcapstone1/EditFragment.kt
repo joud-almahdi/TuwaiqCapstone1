@@ -105,6 +105,10 @@ class EditFragment : Fragment() {
 
                 findNavController().popBackStack()
             }
+            else
+            {
+                Toast.makeText(requireContext(), "Please enter a name for your task", Toast.LENGTH_SHORT).show()
+            }
 
 
 

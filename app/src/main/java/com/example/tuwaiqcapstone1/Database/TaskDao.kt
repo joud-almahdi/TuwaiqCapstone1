@@ -10,6 +10,7 @@ interface TaskDao {
     @Insert
     suspend fun addtask(taskmodel:TaskDataModel)
 
+
     @Query("SELECT * FROM TaskDataModel WHERE task_Status == :status")
     fun gettask(status:Boolean): LiveData<List<TaskDataModel>>
 
