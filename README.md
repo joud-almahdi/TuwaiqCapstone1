@@ -76,7 +76,13 @@ When the user clicks on a task in the main menu, they can view all the details r
 # User Story
 
 
-As someone with so much to do everyday around the clock, I want to keep track of my tasks and when to do them so that I can get them done on time and as efficiently as possible ithout forgetting any of them
+*As someone with so much to do everyday around the clock, I want to keep track of my tasks and when to do them so that I can get them done on time and as efficiently as possible ithout forgetting any of them<br />
+
+*As someone who is uncertain about their capabilities,I want to change certain aspects of my tasks so that they accomedate my circumstances as I see fit<br />
+
+*As someone who likes to keep their workspace organized, I want to get rid of completed tasks so that I can keep my list tidy<br />
+
+*As someone who is forgetful, I want to be reminded of tasks so that I get them done before their due date
 
 # Planning and Development Process
 
