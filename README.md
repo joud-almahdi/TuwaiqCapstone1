@@ -8,7 +8,7 @@ This is the Individual Project for Tuwaiq CapStone 1 for the Kotlin Track. It is
 
 # List of Technologies
 
-This is ToDo List app develped using Android Studio and the Kotlin Programming language. It also uses some built-in Java libraries for some date-related functionalities
+This is ToDo List app develped using Android Studio and the Kotlin Programming language. It also uses some built-in Java libraries for some date-related functionalities, navigation is implemented with fragments,and Room with Dao for database implementation
 
 # Wireframes 
 
