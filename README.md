@@ -103,7 +103,9 @@ One of the extras implemented was notifications for incompleted tasks that are a
 For minor implementations such as crossing out complete tasks,help from online resources such as the official Android documentation was used.
 # Unsolved Problems
 
-As of now, notifications can only be sent when the user opens the application. I would like to implement them in such a way that notifications could be sent even when the app isn't open
+As of now, notifications can only be sent when the user opens the application. I would like to implement them in such a way that notifications could be sent even when the app isn't open<br />
+
+The RecyclerView can get buggy when it hosts 6 or more items. This could possibly be solved using Diffutil
 
 # Favorite Functioanlity
 
