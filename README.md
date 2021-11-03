@@ -34,7 +34,7 @@ This is a prototype of the Splash screen,the first screen of the app.It shows up
 
 
 
-This is first screen that shows to the user. It contains all the tasks found in the database. A checkmark image is displayed on the completed ones, and those that are overdue are marked as such.The user can filter the tasks shown with the button above according to their completion status
+This is first screen that shows to the user. It contains all the tasks found in the database. A checkmark image is displayed on the completed ones, and those that are overdue are marked as such.The user can filter the tasks shown with the button above according to their completion status.Additionally, the user can swipe any task to delete it instantly
 
 ![complete](https://github.com/joud-almahdi/TuwaiqCapstone1/blob/d99b49776bb383f621965c23fb5f162d72c84366/MainMenu.png)
 
@@ -109,8 +109,9 @@ The RecyclerView can get buggy when it hosts 6 or more items. This could possibl
 
 # Favorite Functioanlity
 
-One of my two favorite funtions was the DatePicker inside of a dialog box. When the button for setting a due date is pressed,the default date  will be the current one using a calneder object as mentioned,and the user cannot go back to any day before it.Then the chosen date will show in an edit text in a localdate format that has been converted to a string .
+One of my three favorite funtions was the DatePicker inside of a dialog box. When the button for setting a due date is pressed,the default date  will be the current one using a calneder object as mentioned,and the user cannot go back to any day before it.Then the chosen date will show in an edit text in a localdate format that has been converted to a string .
 
 Another favorite is the checkboxes in the main menu,these are images,and with an OnClickListner, the user can change the state of the task(which includes the image) right then and there without having to go to the edit view.
+Finally, the delete by swiping requires creating an object that inherits from an adstract class which extends from ItemTouchHelper. This abstract class will then be used to create a swiping object that will be used to delete the item from both the list visible to the user and the list made from the data model.
 
 
