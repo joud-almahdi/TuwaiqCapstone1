@@ -12,7 +12,8 @@ class TaskRepository(context:Context) {
     val dao:TaskDao=database.dao()
 
 
-   fun getTask()=dao.gettask()
+   fun getTask(status:Boolean)=dao.gettask(status)
+    fun getCompleteTask(status:Boolean)=dao.getcompletetask(status)
     suspend fun addTask(model:TaskDataModel)=dao.addtask(model)
     suspend fun updateTask(model: TaskDataModel)=dao.updatetask(model)
     suspend fun deleteTask(model: TaskDataModel)=dao.deletetask(model)

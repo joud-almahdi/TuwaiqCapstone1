@@ -15,7 +15,8 @@ class TaskViewModel:ViewModel() {
 
 
     private val repository=TaskRepository.get()
-    var taskcontent=repository.getTask()
+    var taskcontent=repository.getTask(false)
+    var taskcompletecontent=repository.getCompleteTask(true)
 
 
     var selectmutablelivedata=MutableLiveData<TaskDataModel>()

@@ -9,6 +9,8 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
@@ -40,6 +42,7 @@ class MainFragment : Fragment() {
     val usedviewmodel:TaskViewModel by activityViewModels()
      private lateinit var usedfornotifications:TaskDataModel
     var list= mutableListOf<TaskDataModel>()
+    var completedlist=mutableListOf<TaskDataModel>()
     lateinit var addingbutton: FloatingActionButton
 
 
@@ -67,12 +70,19 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val recycle:RecyclerView=view.findViewById(R.id.RecyclerViewInMainFragment)
+        val filterbutton:Button=view.findViewById(R.id.filterbutton)
+
         addingbutton=view.findViewById(R.id.FloatingAddButtonInMainFragment)
         val taskadapter= TaskAdapter(list,usedviewmodel)
-
         recycle.adapter=taskadapter
+
+       //Completed tasks
+        val recyclecomplete:RecyclerView=view.findViewById(R.id.CompletedRecyclerViewInMainFragment)
+        val completedadapter=TaskAdapter(completedlist,usedviewmodel)
+        recyclecomplete.adapter=completedadapter
+
+
         usedviewmodel.taskcontent.observe(viewLifecycleOwner, Observer { it?.let { items ->
-            Log.d("Checknotificationchecks","number of changes+ $counter")
             list.clear()
             list.addAll(items)
 
@@ -94,7 +104,33 @@ class MainFragment : Fragment() {
 
 
 
+        //compeletedTasks
 
+        usedviewmodel.taskcompletecontent.observe(viewLifecycleOwner, Observer { it?.let { items ->
+            completedlist.clear()
+            completedlist.addAll(items)
+
+            completedadapter.notifyDataSetChanged()  } })
+
+
+
+            filterbutton.setOnClickListener {
+
+                if(recycle.visibility==VISIBLE)
+                {
+                    recycle.visibility= INVISIBLE
+                    recyclecomplete.visibility= VISIBLE
+                    filterbutton.setText("Show Incompleted Tasks")
+                }
+                else
+                {
+                    recycle.visibility= VISIBLE
+                    recyclecomplete.visibility= INVISIBLE
+                    filterbutton.setText("Show Completed Tasks")
+
+                }
+
+            }
 
 
         addingbutton.setOnClickListener {

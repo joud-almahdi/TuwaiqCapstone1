@@ -36,7 +36,7 @@ class TaskAdapter(val list:MutableList<TaskDataModel>,val viewmodel:TaskViewMode
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
     //https://developer.android.com/reference/kotlin/android/graphics/Paint#strike_thru_text_flag
     val thetasksfound=list[position]
-
+    holder.tasknameinlayout.text = thetasksfound.task_Name
     if(thetasksfound.due_Date!= "")
     {
       val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
@@ -63,17 +63,18 @@ class TaskAdapter(val list:MutableList<TaskDataModel>,val viewmodel:TaskViewMode
     }
 
 
-    holder.tasknameinlayout.text = thetasksfound.task_Name
-
-
     if (thetasksfound.task_Status==true)
     {
       holder.tasknameinlayout.paintFlags=STRIKE_THRU_TEXT_FLAG
+      holder.taskduedateinlayout.paintFlags=STRIKE_THRU_TEXT_FLAG
+      holder.overudealert.paintFlags=STRIKE_THRU_TEXT_FLAG
       holder.completionimage.setImageResource(R.drawable.checked)
     }
     else
     {
       holder.tasknameinlayout.paintFlags=0
+      holder.taskduedateinlayout.paintFlags=0
+      holder.overudealert.paintFlags=0
       holder.completionimage.setImageResource(R.drawable.unchecked)
     }
 
@@ -90,6 +91,7 @@ class TaskAdapter(val list:MutableList<TaskDataModel>,val viewmodel:TaskViewMode
         thetasksfound.task_Status=true
         holder.tasknameinlayout.paintFlags=STRIKE_THRU_TEXT_FLAG
         holder.taskduedateinlayout.paintFlags=STRIKE_THRU_TEXT_FLAG
+        holder.overudealert.paintFlags=STRIKE_THRU_TEXT_FLAG
         holder.completionimage.setImageResource(R.drawable.checked)
 
       }
@@ -98,6 +100,7 @@ class TaskAdapter(val list:MutableList<TaskDataModel>,val viewmodel:TaskViewMode
         thetasksfound.task_Status=false
         holder.tasknameinlayout.paintFlags=0
         holder.taskduedateinlayout.paintFlags=0
+        holder.overudealert.paintFlags=0
         holder.completionimage.setImageResource(R.drawable.unchecked)
       }
 
