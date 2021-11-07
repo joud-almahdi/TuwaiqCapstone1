@@ -104,6 +104,8 @@ class MainFragment : Fragment() {
 
                 counter++
 
+
+
             }
             taskadapter.notifyDataSetChanged()  } })
 
@@ -212,7 +214,7 @@ class MainFragment : Fragment() {
 
                 Log.d("daysbetween", daysbetween.toString())
 
-                if (daysbetween.toString() == "1" && !it.task_Status) {
+                if (daysbetween.toString() == "0" && !it.task_Status) {
                     Log.d(" the list", "inside if")
                     returnedlist.add(it)
                 }
